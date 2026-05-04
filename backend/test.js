@@ -1,6 +1,6 @@
 async function test() {
   try {
-    // 1. Register
+    // Register
     console.log('Testing Register...');
     const registerRes = await fetch('http://127.0.0.1:5000/api/auth/register', {
       method: 'POST',
@@ -10,7 +10,7 @@ async function test() {
     const registerData = await registerRes.json();
     console.log('Register Response:', registerData);
 
-    // 2. Login
+    // Login
     console.log('\nTesting Login...');
     const loginRes = await fetch('http://127.0.0.1:5000/api/auth/login', {
       method: 'POST',
@@ -21,7 +21,7 @@ async function test() {
     console.log('Login Response:', loginData);
     const token = loginData.token;
 
-    // 3. Profile
+    // Profile
     console.log('\nTesting Profile...');
     const profileRes = await fetch('http://127.0.0.1:5000/api/profile', {
       method: 'GET',
@@ -30,7 +30,7 @@ async function test() {
     const profileData = await profileRes.json();
     console.log('Profile Response:', profileData);
 
-    // 4. Create Crypto
+    // Create Crypto
     console.log('\nTesting Create Crypto...');
     const cryptoRes = await fetch('http://127.0.0.1:5000/api/crypto', {
       method: 'POST',

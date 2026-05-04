@@ -4,11 +4,9 @@ const User = require('../models/User');
 const protect = async (req, res, next) => {
   let token;
 
-  // Try to get token from cookies
   if (req.cookies && req.cookies.jwt) {
     token = req.cookies.jwt;
   } 
-  // Fallback to Bearer token in headers
   else if (
     req.headers.authorization &&
     req.headers.authorization.startsWith('Bearer')

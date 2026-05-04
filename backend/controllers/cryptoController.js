@@ -1,8 +1,6 @@
 const Crypto = require('../models/Crypto');
 
-// @desc    Get all cryptocurrencies
-// @route   GET /api/crypto
-// @access  Public
+// Get all cryptocurrencies
 const getCryptos = async (req, res) => {
   try {
     const cryptos = await Crypto.find({});
@@ -12,9 +10,7 @@ const getCryptos = async (req, res) => {
   }
 };
 
-// @desc    Get top gainers
-// @route   GET /api/crypto/gainers
-// @access  Public
+// Get top gainers
 const getGainers = async (req, res) => {
   try {
     const gainers = await Crypto.find({}).sort({ change24h: -1 }); // Sort descending
@@ -24,9 +20,7 @@ const getGainers = async (req, res) => {
   }
 };
 
-// @desc    Get new listings
-// @route   GET /api/crypto/new
-// @access  Public
+// Get new listings
 const getNewListings = async (req, res) => {
   try {
     const newListings = await Crypto.find({}).sort({ createdAt: -1 }); // Sort newest to oldest
@@ -36,9 +30,7 @@ const getNewListings = async (req, res) => {
   }
 };
 
-// @desc    Add new cryptocurrency
-// @route   POST /api/crypto
-// @access  Public (in real app this should be admin only, but per task requirements we make it public/accessible)
+// Add new cryptocurrency
 const createCrypto = async (req, res) => {
   const { name, symbol, price, image, change24h } = req.body;
 

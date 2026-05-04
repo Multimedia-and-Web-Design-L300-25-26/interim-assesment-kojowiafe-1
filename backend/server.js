@@ -9,27 +9,24 @@ const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const cryptoRoutes = require('./routes/crypto');
 
-// Load env vars
+
 dotenv.config();
 
-// Connect to database
+// connect the database
 connectDB();
 
 const app = express();
 
-// Body parser
 app.use(express.json());
 
-// Cookie parser
 app.use(cookieParser());
 
-// Enable CORS
 app.use(cors({
-  origin: 'http://localhost:5173', // Vite default port
-  credentials: true // Allow cookies to be sent
+  origin: 'http://localhost:5173',
+  credentials: true
 }));
 
-// Mount routers
+// routers
 app.use('/api/auth', authRoutes);
 app.use('/api/profile', userRoutes);
 app.use('/api/crypto', cryptoRoutes);

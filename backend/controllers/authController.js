@@ -10,15 +10,13 @@ const generateToken = (id) => {
 const setTokenCookie = (res, token) => {
   res.cookie('jwt', token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV !== 'development', // Use secure cookies in production
-    sameSite: 'strict', // Prevent CSRF attacks
-    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    secure: process.env.NODE_ENV !== 'development',
+    sameSite: 'strict',
+    maxAge: 30 * 24 * 60 * 60 * 1000,
   });
 };
 
-// @desc    Register a new user
-// @route   POST /api/auth/register
-// @access  Public
+// Register a new user
 const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -43,7 +41,7 @@ const registerUser = async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
-        token: token // Returning token for flexibility, though we use cookies primarily
+        token: token
       });
     } else {
       res.status(400).json({ message: 'Invalid user data' });
@@ -53,9 +51,7 @@ const registerUser = async (req, res) => {
   }
 };
 
-// @desc    Auth user & get token
-// @route   POST /api/auth/login
-// @access  Public
+// Auth user & get token
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
@@ -80,9 +76,7 @@ const loginUser = async (req, res) => {
   }
 };
 
-// @desc    Logout user / clear cookie
-// @route   POST /api/auth/logout
-// @access  Public
+// Logout user / clear cookie
 const logoutUser = (req, res) => {
   res.cookie('jwt', '', {
     httpOnly: true,
