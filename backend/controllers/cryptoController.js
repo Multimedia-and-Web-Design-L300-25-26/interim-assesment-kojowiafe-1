@@ -3,7 +3,7 @@ const Crypto = require('../models/Crypto');
 // Get all cryptocurrencies
 const getCryptos = async (req, res) => {
   try {
-    const cryptos = await Crypto.find({});
+    const cryptos = await Crypto.find();
     res.json(cryptos);
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
@@ -13,7 +13,7 @@ const getCryptos = async (req, res) => {
 // Get top gainers
 const getGainers = async (req, res) => {
   try {
-    const gainers = await Crypto.find({}).sort({ change24h: -1 }); // Sort descending
+    const gainers = await Crypto.find();
     res.json(gainers);
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
