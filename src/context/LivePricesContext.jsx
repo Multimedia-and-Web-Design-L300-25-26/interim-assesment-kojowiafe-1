@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 
 const LivePricesContext = createContext(null);
+const API_URL = "https://interim-assesment-kojowiafe-1.onrender.com";
 
 export function LivePricesProvider({ children }) {
   const [coins, setCoins] = useState([]);

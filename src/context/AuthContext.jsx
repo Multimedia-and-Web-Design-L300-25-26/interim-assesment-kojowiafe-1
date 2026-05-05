@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext(null);
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = "https://interim-assesment-kojowiafe-1.onrender.com";
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
