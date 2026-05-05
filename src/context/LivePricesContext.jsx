@@ -12,9 +12,9 @@ export function LivePricesProvider({ children }) {
     const fetchData = async () => {
       try {
         const [coinsRes, gainersRes, newRes] = await Promise.all([
-          fetch('/api/crypto'),
-          fetch('/api/crypto/gainers'),
-          fetch('/api/crypto/new')
+          fetch(`${API_URL}/api/crypto`),
+          fetch(`${API_URL}/api/crypto/gainers`),
+          fetch(`${API_URL}/api/crypto/new`)
         ]);
 
         if (coinsRes.ok) setCoins(await coinsRes.json());
